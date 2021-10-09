@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 const userManager = require('./routers/userManager');
-// const videoRouter = require('./routers/videoManager');
-const utilRouter = require('./routers/utils');
+const taskManager = require('./routers/taskRouter');
 const port = process.env.PORT || 5000;
 const cors = require('cors');
 
@@ -12,8 +11,7 @@ app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.static('./uploads'));
 
 app.use('/user', userManager);
-// app.use('/video', videoRouter);
-app.use('/util', utilRouter);
+app.use('/task', taskManager);
 
 app.get('/home', (req, res) => {
     console.log('client request on server');
